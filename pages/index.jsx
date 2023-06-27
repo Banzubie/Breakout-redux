@@ -6,9 +6,14 @@ function Header({ title }) {
 
 export default function HomePage() {
 
-
+  const mainStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'center'
+  }
   return (
-    <div>
+    <div style={mainStyles}>
+      <p>Welcome to breakout again!</p>
       <Rotab />
     </div>
   );

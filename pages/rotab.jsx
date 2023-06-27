@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+import Block from './block.jsx'
 
 
 export default function Rotab () {
   const [rotate, setRotate] = useState(0);
   const intervalRef = useRef(null);
+  const blockPlacementLogic = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown, true)
@@ -41,21 +43,22 @@ export default function Rotab () {
   }
 
   const rotTabStyle = {
-    backgroundColor: 'red',
     position: 'relative',
-    left: '40%',
+    left: '33em',
+    top: '25%',
     width: '25em',
     height: '25em',
     borderRadius: '50%',
     textAlign: 'center',
+    margin: '2em',
     transform: `rotate(${rotate}deg)`
   }
   return (
     <>
-    <button onMouseDown={counterClockwise} onMouseUp={stopSpin} onMouseLeave={stopSpin}>Counter clock</button>
       <div className='rotTab' style={rotTabStyle}>
-        <p>Spin</p>
+        {blockPlacementLogic.map(item => <Block multiplier={item}/>)}
       </div>
+      <button onMouseDown={counterClockwise} onMouseUp={stopSpin} onMouseLeave={stopSpin}>Counter clock</button>
       <button onMouseDown={clockwise} onMouseUp={stopSpin} onMouseLeave={stopSpin}>Clockwise</button>
     </>
   )
