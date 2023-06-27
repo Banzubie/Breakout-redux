@@ -1,9 +1,24 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 
 export default function Rotab () {
   const [rotate, setRotate] = useState(0);
   const intervalRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown, true)
+    document.addEventListener('keyup', stopSpin, true)
+  },[])
+
+  const onKeyDown = (e) => {
+    if (e.key === 'a' || e.key === 'ArrowLeft') {
+      counterClockwise()
+    } else if (e.key === 'd' || e.key === 'ArrowRight'){
+      clockwise()
+    } else {
+      return
+    }
+  }
 
   const stopSpin = () => {
     if (intervalRef.current) {
@@ -28,9 +43,9 @@ export default function Rotab () {
   const rotTabStyle = {
     backgroundColor: 'red',
     position: 'relative',
-    left: '50%',
-    width: '15em',
-    height: '15em',
+    left: '40%',
+    width: '25em',
+    height: '25em',
     borderRadius: '50%',
     textAlign: 'center',
     transform: `rotate(${rotate}deg)`
