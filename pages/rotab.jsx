@@ -45,7 +45,7 @@ export default function Rotab () {
 
   const rotTabStyle = {
     backgroundColor: 'green',
-    position: 'abosulte',
+    position: 'relative',
     left: '50%',
     top: '15em',
     width: '25em',
@@ -56,10 +56,9 @@ export default function Rotab () {
   return (
     <>
       <div className='rotTab' style={rotTabStyle}>
-        {blockPlacementLogic.map(item => <Block multiplier={item}/>)}
+        {blockPlacementLogic.map(item => <Block multiplier={item} key={item}/>)}
         <Ball />
       </div>
-      <br />
       <br />
       <br />
       <br />
