@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import Block from './block.jsx'
+import Ball from './ball.jsx'
 
 
 export default function Rotab () {
@@ -43,21 +44,26 @@ export default function Rotab () {
   }
 
   const rotTabStyle = {
-    position: 'relative',
-    left: '33em',
-    top: '25%',
+    backgroundColor: 'green',
+    position: 'abosulte',
+    left: '50%',
+    top: '15em',
     width: '25em',
     height: '25em',
     borderRadius: '50%',
-    textAlign: 'center',
-    margin: '2em',
-    transform: `rotate(${rotate}deg)`
+    transform: `translate(-50%, -50%) rotate(${rotate}deg)`
   }
   return (
     <>
       <div className='rotTab' style={rotTabStyle}>
         {blockPlacementLogic.map(item => <Block multiplier={item}/>)}
+        <Ball />
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <button onMouseDown={counterClockwise} onMouseUp={stopSpin} onMouseLeave={stopSpin}>Counter clock</button>
       <button onMouseDown={clockwise} onMouseUp={stopSpin} onMouseLeave={stopSpin}>Clockwise</button>
     </>
